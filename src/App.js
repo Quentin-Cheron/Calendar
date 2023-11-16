@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { Calendar, momentLocalizer } from "react-big-calendar";
+import moment from "moment";
+import "./App.css";
+import events from "./events";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const localizer = momentLocalizer(moment);
 
-export default App;
+const MyCalendar = (props) => (
+  <div>
+    <Calendar
+      localizer={localizer}
+      startAccessor="start"
+      events={events}
+      endAccessor="end"
+      style={{ height: 500 }}
+    />
+  </div>
+);
+
+export default MyCalendar;
